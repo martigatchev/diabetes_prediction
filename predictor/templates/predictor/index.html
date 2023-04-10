@@ -1,0 +1,52 @@
+{% extends 'predictor/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Diabetes Prediction</h1>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form method="post" action="{% url 'predict' %}">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label for="{{ form.pregnancies.id_for_label }}"
+                           class="col-sm-4 col-form-label">Pregnancies:</label>
+                    <div class="col-sm-8">
+                        {{ form.pregnancies }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ form.glucose.id_for_label }}" class="col-sm-4 col-form-label">Glucose:</label>
+                    <div class="col-sm-8">
+                        {{ form.glucose }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ form.bmi.id_for_label }}" class="col-sm-4 col-form-label">BMI:</label>
+                    <div class="col-sm-8">
+                        {{ form.bmi }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ form.age.id_for_label }}" class="col-sm-4 col-form-label">Age:</label>
+                    <div class="col-sm-8">
+                        {{ form.age }}
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <button type="submit" class="btn btn-primary">Predict</button>
+                </div>
+            </form>
+            {% if prediction %}
+            <div class="alert {% if prediction == 'Negative' %}alert-success{% else %}alert-danger{% endif %} mt-3"
+                 role="alert">
+                {% if prediction == 'Negative' %}
+                The model predicts that the patient does not have diabetes.
+                {% else %}
+                The model predicts that the patient has diabetes.
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

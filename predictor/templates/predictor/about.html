@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends "predictor/base.html" %}
+
+{% block content %}
+    <h2>About the Diabetes Prediction Model</h2>
+    <p>
+        The goal of this project is to create a machine learning model that can accurately predict the likelihood of a patient having diabetes based on a set of input features. The significant predictor variables identified at the beginning of the exploratory data analysis (EDA) include:
+    </p>
+    <ul>
+        <li>Pregnancies</li>
+        <li>Glucose levels</li>
+        <li>Body Mass Index (BMI)</li>
+        <li>Age</li>
+    </ul>
+    <p>
+        During the EDA process, various visualizations were used to understand the relationship between these predictor variables and the target variable (diabetes). This helped us determine which features had the strongest correlation with diabetes. Different methods were employed to identify and evaluate the significant features, such as mutual information, feature importance, and recursive feature elimination. These techniques allowed us to refine our selection of predictor variables and create a more accurate model.
+    </p>
+    <p>
+        The machine learning algorithm used in this project is the Random Forest Classifier. This algorithm was chosen after comparing its performance to other classification algorithms like logistic regression, support vector machines, and k-nearest neighbors using cross-validation. Model evaluation was done using appropriate metrics such as accuracy, precision, recall, F1-score, and ROC-AUC. Visualizations were also provided to help interpret the results and better understand the performance of the model.
+    </p>
+    <p>
+        To use the application, simply input the values for pregnancies, glucose, BMI, and age into the form and submit. The application will then provide a prediction on whether the patient is likely to have diabetes or not.
+    </p>
+{% endblock %}
